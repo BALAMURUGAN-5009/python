@@ -1,0 +1,15 @@
+class Solution(object):
+    def isBalanced(self, node):
+        Flag = ['Y']
+        def chk(node):
+            if node is None:
+                return 0
+            h1=chk(node.left)
+            h2=chk(node.right)
+            if(h1-h2>1 or h2-h1>1):
+                Flag[0]='N'
+            return 1+max(h1,h2)
+        chk(node)
+        if(Flag[0]=='N'):
+            return False
+        return True
